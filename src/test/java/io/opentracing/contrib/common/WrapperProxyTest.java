@@ -26,16 +26,16 @@ import io.opentracing.contrib.common.InterfacesTest.B;
 
 @SuppressWarnings("all")
 public class WrapperProxyTest {
- @Test
- public void testFoo() {
-   final B proxyB = WrapperProxy.wrap(foo, b);
-   assertTrue(proxyB instanceof A);
-   proxyB.a();
-   proxyB.b();
+  @Test
+  public void testFoo() {
+    final B proxyB = WrapperProxy.wrap(foo, b);
+    assertTrue(proxyB instanceof A);
+    proxyB.a();
+    proxyB.b();
 
-   final A proxyA = WrapperProxy.wrap(foo, a);
-   assertTrue(proxyA instanceof B);
-   proxyA.a();
-   ((B)proxyA).b();
- }
+    final A proxyA = WrapperProxy.wrap(foo, a);
+    assertTrue(proxyA instanceof B);
+    proxyA.a();
+    ((B)proxyA).b();
+  }
 }

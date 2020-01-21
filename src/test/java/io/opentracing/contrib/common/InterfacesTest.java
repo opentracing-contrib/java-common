@@ -27,113 +27,113 @@ import io.opentracing.contrib.common.Interfaces;
 
 @SuppressWarnings("all")
 public class InterfacesTest {
- private static final Comparator<Class<?>> comparator = new Comparator<Class<?>>() {
-   @Override
-   public int compare(final Class<?> o1, final Class<?> o2) {
-     return o1.getName().compareTo(o2.getName());
-   }
- };
+  private static final Comparator<Class<?>> comparator = new Comparator<Class<?>>() {
+    @Override
+    public int compare(final Class<?> o1, final Class<?> o2) {
+      return o1.getName().compareTo(o2.getName());
+    }
+  };
 
- private static void testGetAllInterfaces(final Object obj, final Class<?> ... expecteds) {
-   final Class<?>[] ifaces = Interfaces.getAllInterfaces(obj.getClass());
-   Arrays.sort(ifaces, comparator);
-   Arrays.sort(expecteds, comparator);
-   assertEquals(Arrays.toString(ifaces), Arrays.toString(expecteds));
-   final List<Class<?>> list = Arrays.asList(ifaces);
-   for (final Class<?> expected : expecteds)
-     assertTrue(list.contains(expected));
- }
+  private static void testGetAllInterfaces(final Object obj, final Class<?> ... expecteds) {
+    final Class<?>[] ifaces = Interfaces.getAllInterfaces(obj.getClass());
+    Arrays.sort(ifaces, comparator);
+    Arrays.sort(expecteds, comparator);
+    assertEquals(Arrays.toString(ifaces), Arrays.toString(expecteds));
+    final List<Class<?>> list = Arrays.asList(ifaces);
+    for (final Class<?> expected : expecteds)
+      assertTrue(list.contains(expected));
+  }
 
- public interface A {
-   void a();
- }
+  public interface A {
+    void a();
+  }
 
- public interface B extends A {
-   void b();
- }
+  public interface B extends A {
+    void b();
+  }
 
- public interface C extends B {
- }
+  public interface C extends B {
+  }
 
- public interface D {
- }
+  public interface D {
+  }
 
- public static class Bar implements C, D {
-   @Override
-   public void b() {
-   }
+  public static class Bar implements C, D {
+    @Override
+    public void b() {
+    }
 
-   @Override
-   public void a() {
-   }
- }
+    @Override
+    public void a() {
+    }
+  }
 
- public static class Foo extends Bar implements B {
- }
+  public static class Foo extends Bar implements B {
+  }
 
- public static final Foo foo = new Foo();
+  public static final Foo foo = new Foo();
 
- public static final Bar bar = new Bar();
+  public static final Bar bar = new Bar();
 
- public static final A a = new A() {
-   @Override
-   public void a() {
-   }
- };
+  public static final A a = new A() {
+    @Override
+    public void a() {
+    }
+  };
 
- public static final B b = new B() {
-   @Override
-   public void a() {
-   }
+  public static final B b = new B() {
+    @Override
+    public void a() {
+    }
 
-   @Override
-   public void b() {
-   }
- };
+    @Override
+    public void b() {
+    }
+  };
 
- public static final C c = new C() {
-   @Override
-   public void a() {
-   }
+  public static final C c = new C() {
+    @Override
+    public void a() {
+    }
 
-   @Override
-   public void b() {
-   }
- };
+    @Override
+    public void b() {
+    }
+  };
 
- public static final D d = new D() {};
+  public static final D d = new D() {};
 
- @Test
- public void testA() {
-   testGetAllInterfaces(new A() {
-     @Override
-     public void a() {
-     }
-   }, A.class);
- }
+  @Test
+  public void testA() {
+    testGetAllInterfaces(new A() {
+      @Override
+      public void a() {
+      }
+    }, A.class);
+  }
 
- @Test
- public void testB() {
-   testGetAllInterfaces(b, A.class, B.class);
- }
+  @Test
+  public void testB() {
+    testGetAllInterfaces(b, A.class, B.class);
+  }
 
- @Test
- public void testC() {
-   testGetAllInterfaces(c, A.class, B.class, C.class);
- }
+  @Test
+  public void testC() {
+    testGetAllInterfaces(c, A.class, B.class, C.class);
+  }
 
- @Test
- public void testD() {
-   testGetAllInterfaces(d, D.class);
- }
+  @Test
+  public void testD() {
+    testGetAllInterfaces(d, D.class);
+  }
 
- @Test
- public void testFoo() {
-   testGetAllInterfaces(foo, A.class, B.class, C.class, D.class);
- }
+  @Test
+  public void testFoo() {
+    testGetAllInterfaces(foo, A.class, B.class, C.class, D.class);
+  }
 
- @Test
- public void testBar() {
-   testGetAllInterfaces(bar, A.class, B.class, C.class, D.class);
- }
+  @Test
+  public void testBar() {
+    testGetAllInterfaces(bar, A.class, B.class, C.class, D.class);
+  }
 }
