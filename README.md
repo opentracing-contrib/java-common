@@ -2,8 +2,8 @@
 
 > Common utilities for OpenTracing Instrumentation Plugins
 
-[![Build Status](https://travis-ci.org/safris/java-common.svg?branch=master)](https://travis-ci.org/safris/java-common)
-[![Coverage Status](https://coveralls.io/repos/github/safris/java-common/badge.svg?branch=master)](https://coveralls.io/github/safris/java-common?branch=master)
+[![Build Status](https://travis-ci.org/opentracing-contrib/java-common.svg?branch=master)](https://travis-ci.org/opentracing-contrib/java-common)
+[![Coverage Status](https://coveralls.io/repos/github/opentracing-contrib/java-common/badge.svg?branch=master)](https://coveralls.io/github/opentracing-contrib/java-common?branch=master)
 [![Javadocs](https://www.javadoc.io/badge/io.opentracing.contrib/common.svg)](https://www.javadoc.io/doc/io.opentracing.contrib/common)
 [![Released Version](https://img.shields.io/maven-central/v/io.opentracing.contrib/common.svg)](https://mvnrepository.com/artifact/io.opentracing.contrib/common)
 
