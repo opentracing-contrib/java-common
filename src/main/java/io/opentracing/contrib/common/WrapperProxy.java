@@ -61,16 +61,23 @@ public final class WrapperProxy {
     if (obj == null || wrapper == null || obj == wrapper)
       return wrapper;
 
-    final Class<?> cls = obj.getClass();
-    return (T)Proxy.newProxyInstance(cls.getClassLoader(), Interfaces.getAllInterfaces(cls), new WrapperInvocationHandler<T>() {
+    final Class<?> objClass = obj.getClass();
+    final Class<?> wrapperClass = wrapper.getClass();
+    return (T)Proxy.newProxyInstance(objClass.getClassLoader(), Classes.getAllInterfaces(objClass), new WrapperInvocationHandler<T>() {
       @Override
       public Object invoke(final Object proxy, final Method method, final Object[] args) throws Throwable {
         try {
-          return method.invoke(wrapper, args);
+          if (method.getDeclaringClass().isAssignableFrom(wrapperClass))
+            return method.invoke(wrapper, args);
+
+          final Method specific = Classes.getDeclaredMethodDeep(wrapperClass, method.getName(), method.getParameterTypes());
+          if (specific != null)
+            return specific.invoke(wrapper, args);
         }
         catch (final IllegalArgumentException e) {
-          return method.invoke(obj, args);
         }
+
+        return method.invoke(obj, args);
       }
 
       @Override

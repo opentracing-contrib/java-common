@@ -15,14 +15,14 @@
 
 package io.opentracing.contrib.common;
 
-import static io.opentracing.contrib.common.InterfacesTest.*;
+import static io.opentracing.contrib.common.ClassesTest.*;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 import io.opentracing.contrib.common.WrapperProxy;
-import io.opentracing.contrib.common.InterfacesTest.A;
-import io.opentracing.contrib.common.InterfacesTest.B;
+import io.opentracing.contrib.common.ClassesTest.A;
+import io.opentracing.contrib.common.ClassesTest.B;
 
 @SuppressWarnings("all")
 public class WrapperProxyTest {

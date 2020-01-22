@@ -23,10 +23,10 @@ import java.util.List;
 
 import org.junit.Test;
 
-import io.opentracing.contrib.common.Interfaces;
+import io.opentracing.contrib.common.Classes;
 
 @SuppressWarnings("all")
-public class InterfacesTest {
+public class ClassesTest {
   private static final Comparator<Class<?>> comparator = new Comparator<Class<?>>() {
     @Override
     public int compare(final Class<?> o1, final Class<?> o2) {
@@ -35,7 +35,7 @@ public class InterfacesTest {
   };
 
   private static void testGetAllInterfaces(final Object obj, final Class<?> ... expecteds) {
-    final Class<?>[] ifaces = Interfaces.getAllInterfaces(obj.getClass());
+    final Class<?>[] ifaces = Classes.getAllInterfaces(obj.getClass());
     Arrays.sort(ifaces, comparator);
     Arrays.sort(expecteds, comparator);
     assertEquals(Arrays.toString(ifaces), Arrays.toString(expecteds));
