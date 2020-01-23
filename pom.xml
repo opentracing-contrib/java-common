@@ -20,7 +20,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.opentracing.contrib</groupId>
   <artifactId>common</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0-SNAPSHOT</version>
   <name>Java Common</name>
   <description>Common utilities for OpenTracing Instrumentation Plugins</description>
   <url>https://github.com/opentracing-contrib/java-common</url>
@@ -163,6 +163,22 @@
               </execution>
             </executions>
           </plugin>
+          <plugin>
+            <groupId>org.eluder.coveralls</groupId>
+            <artifactId>coveralls-maven-plugin</artifactId>
+            <version>4.3.0</version>
+            <configuration>
+              <timestampFormat>EpochMillis</timestampFormat>
+            </configuration>
+            <executions>
+              <execution>
+                <phase>deploy</phase>
+                <goals>
+                  <goal>report</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
         </plugins>
       </build>
     </profile>
@@ -249,22 +265,6 @@
                     <arg>loopback</arg>
                   </gpgArguments>
                 </configuration-->
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>org.eluder.coveralls</groupId>
-            <artifactId>coveralls-maven-plugin</artifactId>
-            <version>4.3.0</version>
-            <configuration>
-              <timestampFormat>EpochMillis</timestampFormat>
-            </configuration>
-            <executions>
-              <execution>
-                <phase>install</phase>
-                <goals>
-                  <goal>report</goal>
-                </goals>
               </execution>
             </executions>
           </plugin>
