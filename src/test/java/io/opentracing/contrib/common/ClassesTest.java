@@ -136,4 +136,17 @@ public class ClassesTest {
   public void testBar() {
     testGetAllInterfaces(bar, A.class, B.class, C.class, D.class);
   }
+
+  @Test
+  public void testGetDeclaredMethod() {
+    assertNotNull(Classes.getDeclaredMethod(ClassesTest.class, "testGetDeclaredMethod"));
+    assertNotNull(Classes.getDeclaredMethod(ClassesTest.class, "testGetAllInterfaces", Object.class, Class[].class));
+    assertNull(Classes.getDeclaredMethod(ClassesTest.class, "foo"));
+  }
+
+  @Test
+  public void testGetDeclaredMethodDeep() {
+    assertNull(Classes.getDeclaredMethod(Foo.class, "b"));
+    assertNotNull(Classes.getDeclaredMethodDeep(Foo.class, "b"));
+  }
 }
