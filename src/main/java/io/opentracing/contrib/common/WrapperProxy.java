@@ -116,7 +116,7 @@ public final class WrapperProxy {
    * @throws NullPointerException If {@code obj} or {@code wrappedClass} is
    *           null.
    */
-  public static <T>boolean isWrapper(final T obj, final Class<T> wrappedClass) {
+  public static <T>boolean isWrapper(final T obj, final Class<? extends T> wrappedClass) {
     if (!Proxy.isProxyClass(obj.getClass()))
       return false;
 
