@@ -54,12 +54,11 @@ public final class Classes {
     HashSet<Class<?>> set = null;
     do {
       final Class<?>[] ifaces = parent.getInterfaces();
-      if (set == null) {
-        if (ifaces.length == 0)
-          return ifaces;
+      if (ifaces.length == 0)
+        continue;
 
+      if (set == null)
         set = new HashSet<>(4);
-      }
 
       for (final Class<?> iface : ifaces)
         recurse(iface, set);
