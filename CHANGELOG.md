@@ -1,5 +1,8 @@
 # Changes by Version
 
+## v0.1.4 (2020-01-24)
+* Prevent `UndeclaredThrowableException`.
+
 ## v0.1.3 (2020-01-24)
 * Patch `Classes.getAllInterfaces(Class)`.
 

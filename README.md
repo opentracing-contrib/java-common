@@ -17,7 +17,7 @@ Add the following dependency to your project's POM:
 <dependency>
   <groupId>io.opentracing.contrib</groupId>
   <artifactId>common</artifactId>
-  <version>0.1.3</version>
+  <version>0.1.4</version>
 </dependency>
 ```
 
