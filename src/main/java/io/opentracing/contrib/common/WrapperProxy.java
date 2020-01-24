@@ -16,6 +16,7 @@
 package io.opentracing.contrib.common;
 
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
@@ -67,17 +68,27 @@ public final class WrapperProxy {
       @Override
       public Object invoke(final Object proxy, final Method method, final Object[] args) throws Throwable {
         try {
-          if (method.getDeclaringClass().isAssignableFrom(wrapperClass))
-            return method.invoke(wrapper, args);
+          try {
+            if (method.getDeclaringClass().isAssignableFrom(wrapperClass))
+              return method.invoke(wrapper, args);
 
-          final Method specific = Classes.getDeclaredMethodDeep(wrapperClass, method.getName(), method.getParameterTypes());
-          if (specific != null)
-            return specific.invoke(wrapper, args);
-        }
-        catch (final IllegalArgumentException e) {
-        }
+            final Method specific = Classes.getDeclaredMethodDeep(wrapperClass, method.getName(), method.getParameterTypes());
+            if (specific != null)
+              return specific.invoke(wrapper, args);
+          }
+          catch (final IllegalArgumentException e) {
+          }
 
-        return method.invoke(obj, args);
+          return method.invoke(obj, args);
+        }
+        catch (final InvocationTargetException e) {
+          throw e.getCause();
+        }
+        catch (final IllegalAccessException e) {
+          final IllegalAccessError error = new IllegalAccessError(e.getMessage());
+          error.setStackTrace(e.getStackTrace());
+          throw error;
+        }
       }
 
       @Override
