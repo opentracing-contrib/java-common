@@ -51,8 +51,8 @@ public final class Classes {
    */
   public static Class<?>[] getAllInterfaces(final Class<?> cls) {
     Class<?> parent = cls;
-    HashSet<Class<?>> set = null;
     Class<?>[] ifaces = null;
+    HashSet<Class<?>> set = null;
     do {
       ifaces = parent.getInterfaces();
       if (ifaces.length == 0)
