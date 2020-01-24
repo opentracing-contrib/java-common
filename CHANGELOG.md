@@ -1,5 +1,8 @@
 # Changes by Version
 
+## v0.1.3 (2020-01-24)
+* Patch `Classes.getAllInterfaces(Class)`.
+
 ## v0.1.2 (2020-01-24)
 * Patch `Classes.getAllInterfaces(Class)`.
 
