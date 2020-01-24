@@ -52,8 +52,9 @@ public final class Classes {
   public static Class<?>[] getAllInterfaces(final Class<?> cls) {
     Class<?> parent = cls;
     HashSet<Class<?>> set = null;
+    Class<?>[] ifaces = null;
     do {
-      final Class<?>[] ifaces = parent.getInterfaces();
+      ifaces = parent.getInterfaces();
       if (ifaces.length == 0)
         continue;
 
@@ -64,7 +65,7 @@ public final class Classes {
         recurse(iface, set);
     }
     while ((parent = parent.getSuperclass()) != null);
-    return set.toArray(new Class[set.size()]);
+    return set == null ? ifaces : set.toArray(new Class[set.size()]);
   }
 
   /**
