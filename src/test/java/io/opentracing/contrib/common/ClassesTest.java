@@ -23,8 +23,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import io.opentracing.contrib.common.Classes;
-
 @SuppressWarnings("all")
 public class ClassesTest {
   private static final Comparator<Class<?>> comparator = new Comparator<Class<?>>() {
@@ -36,8 +34,6 @@ public class ClassesTest {
 
   private static void testGetAllInterfaces(final Object obj, final Class<?> ... expecteds) {
     final Class<?>[] ifaces = Classes.getAllInterfaces(obj.getClass());
-    Arrays.sort(ifaces, comparator);
-    Arrays.sort(expecteds, comparator);
     assertEquals(Arrays.toString(ifaces), Arrays.toString(expecteds));
     final List<Class<?>> list = Arrays.asList(ifaces);
     for (final Class<?> expected : expecteds)
@@ -114,12 +110,12 @@ public class ClassesTest {
 
   @Test
   public void testB() {
-    testGetAllInterfaces(b, A.class, B.class);
+    testGetAllInterfaces(b, B.class, A.class);
   }
 
   @Test
   public void testC() {
-    testGetAllInterfaces(c, A.class, B.class, C.class);
+    testGetAllInterfaces(c, C.class, B.class, A.class);
   }
 
   @Test
@@ -129,12 +125,12 @@ public class ClassesTest {
 
   @Test
   public void testFoo() {
-    testGetAllInterfaces(foo, A.class, B.class, C.class, D.class);
+    testGetAllInterfaces(foo, B.class, A.class, C.class, D.class);
   }
 
   @Test
   public void testBar() {
-    testGetAllInterfaces(bar, A.class, B.class, C.class, D.class);
+    testGetAllInterfaces(bar, C.class, B.class, A.class, D.class);
   }
 
   @Test
