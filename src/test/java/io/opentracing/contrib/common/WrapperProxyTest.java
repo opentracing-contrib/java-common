@@ -20,10 +20,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import io.opentracing.contrib.common.WrapperProxy;
-import io.opentracing.contrib.common.ClassesTest.A;
-import io.opentracing.contrib.common.ClassesTest.B;
-
 @SuppressWarnings("all")
 public class WrapperProxyTest {
   @Test

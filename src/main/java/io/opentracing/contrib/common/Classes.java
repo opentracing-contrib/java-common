@@ -18,6 +18,7 @@ package io.opentracing.contrib.common;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 
 public final class Classes {
   /**
@@ -59,7 +60,7 @@ public final class Classes {
         continue;
 
       if (set == null)
-        set = new HashSet<>(4);
+        set = new LinkedHashSet<>(4);
 
       for (final Class<?> iface : ifaces)
         recurse(iface, set);
